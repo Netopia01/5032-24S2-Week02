@@ -62,29 +62,42 @@
         Company:
         <!-- Activity 9a: Get the company name from the bookstores object. -->
         <!-- TODO: CODE TO GET COMPANY NAME HERE -->
+        {{ bookstore.name }}
       </p>
 
       <p>
         Total Stores:
         <!-- Activity 9b: Get the total number of stores from the bookstores object. -->
         <!-- TODO: CODE TO GET TOTAL STORES HERE -->
+        {{ bookstore.totalStores }}
       </p>
 
       <h3>Iterating Object Properties</h3>
       <p>Store Types:</p>
       <!-- Activity 10: Iterate through the storeTypes array and display the store type and the number of stores that use that type. -->
       <!-- TODO: CODE TO RENDER LIST OF STORE TYPES HERE -->
+      <ul>
+        <li v-for="(value, key) in bookstore.storeTypes" :key="key">
+          {{ key }}: {{ value }}
+        </li>
+      </ul>
 
       <h3>Nested Objects</h3>
       <p>Opening Hours:</p>
       <!-- Activity 11: Iterate through the openingHours object and display the day of the week and the opening and closing times. -->
       <!-- TODO: CODE TO RENDER LIST OF OPENING HOURS HERE -->
+      <ul>
+        <li v-for="(times, day) in bookstore.openingHours" :key="day">
+          {{ day }}: {{ times.open }} - {{ times.close }}
+        </li>
+      </ul>
 
       <h3>Working with Arrays in Objects</h3>
       <!-- Activity 12: Get the top sellers from the bookstores object. -->
       <!-- TODO: CODE TO GET TOP SELLERS HERE -->
-      <p>We operate in:</p>
-      <p>Our #1 seller:</p>
+      <p>We operate in: {{ bookstores.countries.join(", ") }}
+      </p>
+      <p>Our #1 seller: {{ bookstore.topSellers[0] }}</p>
     </section>
 
     <section class="lab-section">
@@ -137,6 +150,14 @@ const austen = computed(() =>
   // TODO: CODE TO FIND AUTHOR BY ID HERE
   authors.filter((author) => author.id == 1)[0]
 )
+
+// Activity 9
+const bookstore = computed(() =>
+  bookstores
+)
+
+
+
 </script>
 
 <style scoped>
