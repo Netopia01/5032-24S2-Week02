@@ -10,17 +10,29 @@
       <h3>Iterating through Arrays</h3>
       <!-- Activity 6: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
+      <ul>
+        <li v-for="author in authors" :key="author.id">
+          {{ author.name }} ({{ author.birthYear }})
+        </li>
+      </ul>
 
       <h3>Filtering Arrays</h3>
       <!-- Activity 7: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Authors born after 1850:</p>
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
-
+      <li v-for="author in modernAuthors" :key="author.id">
+        {{ author.name }} ({{ author.birthYear }})
+      </li>
       <h3>Mapping Arrays</h3>
       <p>Famous works:</p>
       <ul>
         <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
         <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
+        <ul>
+          <li v-for="work in allFamousWorks" :key="work">
+            {{ work }}
+          </li>
+        </ul>
       </ul>
 
       <h3>Finding in Arrays</h3>
@@ -30,6 +42,15 @@
       <p>{{ austen?.name }}'s works:</p>
       <!-- Activity 9: Render a list of Austen's works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
       <!-- TODO: CODE TO RENDER LIST OF AUSTEN'S WORKS HERE -->
+      <ul>
+        <!-- Activity 8: Render a list of all famous works. Hint: Use the v-for directive to iterate through the array of authors that you have filtered out. -->
+        <!-- TODO: CODE TO RENDER LIST OF FAMOUS WORKS HERE -->
+        <ul>
+          <li v-for="works in austen.famousWorks" :key="works">
+            {{ works.title }}
+          </li>
+        </ul>
+      </ul>
     </section>
 
     <section class="lab-section">
@@ -79,13 +100,12 @@
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
-
     </section>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed } from 'vue'
 
 // Activity 1: Import JSON files (authors.json and bookstores.json)
 // TODO: CODE TO IMPORT JSON FILES HERE
@@ -109,19 +129,19 @@ const allFamousWorks = computed(() =>
 // Activity 4: Find author by name
 const orwell = computed(() =>
   // TODO: CODE TO FIND AUTHOR BY NAME HERE
-  authors.filter((author) => author.name == "George Orwell")
+  authors.filter((author) => author.name == 'George Orwell')[0]
 )
 
 // Activity 5: Find author by ID
 const austen = computed(() =>
   // TODO: CODE TO FIND AUTHOR BY ID HERE
-  authors.filter((author) => author.id == 1)
+  authors.filter((author) => author.id == 1)[0]
 )
 </script>
 
 <style scoped>
 .json-lab {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 80vw;
   margin: 0 auto;
   padding: 20px;
@@ -167,7 +187,7 @@ code {
   background-color: #e0e0e0;
   padding: 2px 5px;
   border-radius: 4px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 ul {
