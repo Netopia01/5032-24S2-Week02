@@ -10,7 +10,7 @@
       <h3>Iterating through Arrays</h3>
       <!-- Activity 6: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
-      
+
       <h3>Filtering Arrays</h3>
       <!-- Activity 7: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
       <p>Authors born after 1850:</p>
@@ -89,28 +89,34 @@ import { ref, computed } from "vue"
 
 // Activity 1: Import JSON files (authors.json and bookstores.json)
 // TODO: CODE TO IMPORT JSON FILES HERE
+import authors from '../assets/json/authors.json'
+import bookstores from '../assets/json/bookstores.json'
 
 const showMessage = ref(false)
 
 // Activity 2: Get authors born after 1850
-const modernAuthors = computed(() => {
+const modernAuthors = computed(() =>
   // TODO: CODE TO FILTER ARRAY OF AUTHORS HERE
-})
+  authors.filter((author) => author.birthYear > 1850)
+)
 
 // Activity 3: Get all famous works
-const allFamousWorks = computed(() => {
+const allFamousWorks = computed(() =>
   // TODO: CODE TO GET ALL FAMOUS WORKS HERE
-})
+  authors.flatMap((author) => author.famousWorks.map((work) => work.title))
+)
 
 // Activity 4: Find author by name
-const orwell = computed(() => {
+const orwell = computed(() =>
   // TODO: CODE TO FIND AUTHOR BY NAME HERE
-})
+  authors.filter((author) => author.name == "George Orwell")
+)
 
 // Activity 5: Find author by ID
-const austen = computed(() => {
+const austen = computed(() =>
   // TODO: CODE TO FIND AUTHOR BY ID HERE
-})
+  authors.filter((author) => author.id == 1)
+)
 </script>
 
 <style scoped>
@@ -128,6 +134,7 @@ h1,
 h2 {
   color: #333;
 }
+
 h1 {
   text-align: center;
 }
@@ -167,6 +174,7 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   background-color: #f0f0f0;
   padding: 10px;
