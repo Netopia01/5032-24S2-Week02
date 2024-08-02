@@ -113,6 +113,14 @@
     <section class="lab-section">
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
+
+      <ul>
+        <div v-for="author in authors" :key="author.id">
+          <li v-if="author.name == 'George Orwell'" class="highlight">{{ author.name }}</li>
+          <li v-else>{{ author.name }}</li>
+        </div> 
+      </ul>
+
     </section>
   </div>
 </template>
@@ -156,6 +164,7 @@ const bookstore = computed(() =>
   bookstores
 )
 
+const isGeorgeOrwell = ref(false)
 
 
 </script>
